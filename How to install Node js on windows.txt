@@ -1,0 +1,10 @@
+Download Node js and select the npm install.
+
+Once finished.  Restart computer.
+
+In the Node js command line terminal that you locate and open. 
+
+type node -v enter and nmp -v enter.
+
+type node hello.js enter to get installed message.
+

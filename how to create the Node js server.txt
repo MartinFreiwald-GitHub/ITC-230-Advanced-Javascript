@@ -1,0 +1,24 @@
+code for the http server on Node js
+
+var httpmod = require("http");
+
+httpmod.creatServer(function(request,response) {
+   response.writeHead(200,{'Content-Type':'text/plain'});
+  response.end("You're Javascript code has been succesfully executed at Server :})")
+
+}).listen(3000);
+console.log('Server running at http://127.0.0.1:3000');
+
+in Node js command line type: node nodejsd.js Enter for file creation.
+
+from the command line output of 127.0.0.1 copy paste it in the browser address.  Hit enter.
+
+should see the message.
+
+In the command line node js ,use Ctrl-c to stop the server. 
+
+in Node js command line type: node nodejsd.js Enter to start the server.
+
+goto browser and enter the 127.0.0.1:3000 to run the brower in the server.
+
+
