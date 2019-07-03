@@ -1,0 +1,23 @@
+{
+  "name": "itc-230",
+  "version": "1.0.0",
+  "description": "Summer quarter 2019",
+  "main": "index.js",
+  "dependencies": {
+    "express-handlebars": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinFreiwald-GitHub/ITC-230-Advanced-Javascript.git"
+  },
+  "author": "Martin Freiwald",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartinFreiwald-GitHub/ITC-230-Advanced-Javascript/issues"
+  },
+  "homepage": "https://github.com/MartinFreiwald-GitHub/ITC-230-Advanced-Javascript#readme"
+}
