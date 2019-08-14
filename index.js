@@ -88,8 +88,6 @@ app.post('/detail', (req, res) => {
 
  app.get('/api/delete/:make', (req, res) => {
   Car.remove({'make':req.params.make}, (err, result) => {
-    console.log(err)
-    console.log(result)
     if (err) {
         console.log(err);
     } else {
