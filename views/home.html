@@ -1,0 +1,17 @@
+
+<h1> Home page </h1> 
+
+<p>Just filling out the page for a test of home2.html</p>
+
+<div>What do you think ??</div>
+
+<FORM action="/detail" method="post">
+Enter the make: <input type=text name="make">
+<button>Submit</button>
+
+
+</FORM> 
+{{cars}}
+{{#each cars}}
+ <li>{{make}}</li>
+{{/each}}
