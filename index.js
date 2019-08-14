@@ -3,6 +3,7 @@ const data = require("./data")
 const express = require("express");
 const bodyParser = require("body-parser")
 const app = express();
+const Car = require("./models/cars");
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public')); // set location for static files
@@ -20,7 +21,29 @@ app.set("view engine", ".html");
 //  });
 
 app.get('/', (req, res) => {
-res.render('home'); 
+  Car.find({}, (err, result) => {
+
+    if (err) {
+        console.log(err);
+    } else {
+      res.render('home', {cars: result}); 
+        console.log(result);
+    }
+});
+
+});
+
+app.get('/api/cars', (req, res) => {
+  Car.find({}, (err, result) => {
+
+    if (err) {
+        console.log(err);
+    } else {
+      res.json(result); 
+        console.log(result);
+    }
+});
+
 });
 
  //send plain text response
@@ -31,14 +54,57 @@ res.render('home');
 
 // handle form submission
 app.post('/detail', (req, res) => {
-  console.log(req.body)
-  let result = data.getitem(req.body.make)
-  res.render('detail', {make: req.body.make, car: result});
+  
+  Car.find({'make':req.body.make}, (err, result) => {
+
+    if (err) {
+        console.log(err);
+    } else {
+      res.render('detail', {make: req.body.make, car: result}); 
+        console.log(result);
+    }
+});
+ });
+
+ app.get('/api/detail/:make', (req, res) => {
+  console.log(req.params)
+  Car.findOne({'make':req.params.make}, (err, result) => {
+    console.log(err)
+    console.log(result)
+    if (err || ! result) {
+        console.log(err);
+        return res.status(404).send('Not Found here');
+    } else {
+      res.json(result); 
+
+    }
+});
  });
 
  app.get('/delete', (req, res) => {
   
   res.render('delete', {make: req.query.make});
+ });
+
+ app.get('/api/delete/:make', (req, res) => {
+  Car.remove({'make':req.params.make}, (err, result) => {
+    console.log(err)
+    console.log(result)
+    if (err) {
+        console.log(err);
+    } else {
+      res.json(result); 
+    }
+   });
+ });
+
+ app.post('/api/add', (req, res) => {
+  console.log(req.body)
+  Car.updateOne({'make':req.body.make}, req.body, {upsert:true}, (err, result) => {
+    if (err) return next(err);
+    console.log(result);
+    res.json(result)
+  }); 
  });
 
 // define 303 handler
